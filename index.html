@@ -1,0 +1,237 @@
+<!DOCTYPE html><html lang="ar" dir="rtl"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TV Plus - تطبيق البث</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    html, body { overflow-x: hidden; }
+    body {
+      font-family:'Cairo',sans-serif;
+      margin:0;
+      background:#111;
+      color:#fff;
+      text-align:center;
+    }
+    header {
+      background:#000;
+      padding:2rem 1rem;
+    }
+    header img {
+      max-width:100px;
+      border-radius:1rem;
+    }
+    header h1 {
+      font-size:2.5rem;
+      margin:0.5rem 0;
+    }
+    .btn-features {
+      background:#222;
+      color:#fff;
+      padding:0.8rem 1.2rem;
+      border:none;
+      border-radius:6px;
+      cursor:pointer;
+      font-size:1.1rem;
+      display:inline-flex;
+      align-items:center;
+      gap:0.5rem;
+      transition:background .3s;
+    }
+    .btn-features:hover {
+      background:#333;
+    }
+    .btn-features .fa-chevron-down {
+      transition: transform .3s ease;
+    }
+    .btn-features.open .fa-chevron-down {
+      transform: rotate(-180deg);
+    }
+    .features-container {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height .5s ease;
+      margin:1rem auto;
+      width:90%;
+    }
+    .features-container.active {
+      max-height: 1000px;
+    }
+    .feature-item {
+      display:flex;
+      align-items:center;
+      padding:1rem;
+      margin:0.5rem 0;
+      background: rgba(0,243,255,0.05);
+      border-radius:12px;
+      border:1px solid rgba(0,243,255,0.1);
+    }
+    .feature-icon {
+      font-size:2rem;
+      color:#00f3ff;
+      margin-left:1rem;
+    }
+    .swiper-container {
+      background:#000;
+      padding:1rem 0;
+    }
+    .swiper-wrapper {
+      display:flex;
+      align-items:center;
+    }
+    .swiper-slide {
+      flex:0 0 auto;
+      display:flex;
+      justify-content:center;
+    }
+    .swiper-slide img {
+      width:40%;
+      height:auto;
+      border-radius:1rem;
+      box-shadow:0 0 10px rgba(0,255,255,0.2);
+    }
+    .download-section {
+      background: rgba(0, 0, 0, 0.8);
+      padding:2rem 1rem;
+    }
+    .download-btn {
+      display:block;
+      width:90%;
+      margin:1rem auto;
+      padding:1rem;
+      background:#0a84ff;
+      color:#fff;
+      border-radius:10px;
+      text-decoration:none;
+      font-size:1.2rem;
+    }
+    input.code-input {
+      width:90%;
+      margin:0.5rem auto;
+      padding:0.8rem;
+      background:#333;
+      border:none;
+      color:#eee;
+      font-size:1rem;
+      border-radius:5px;
+      text-align:center;
+      pointer-events:none;
+    }
+    .telegram-link i {
+      font-size:48px;
+      margin-top:1.5rem;
+      color:#fff;
+    }
+    footer {
+      margin-top:3rem;
+      padding:1rem;
+      font-size:0.9rem;
+      color:#888;
+    }
+  </style>
+<style type="text/css">* {user-select: auto !important; -webkit-user-select: auto !important;}</style><input type="hidden" id="inject_idm_text_selection"><style></style></head>
+<body>
+  <header>
+    <img src="https://iili.io/Fh9umBt.png" alt="TV Plus Logo">
+    <h1>TV Plus</h1>
+    <button class="btn-features" id="featBtn">
+      <span>مميزات التطبيق</span>
+      <i class="fa fa-chevron-down"></i>
+    </button>
+    <div class="features-container" id="featuresContainer">
+      <div class="feature-item">
+        <i class="fas fa-tv feature-icon"></i>
+        <div>
+          <h3>جودة 4K فائقة</h3>
+          <p>بث مباشر بدقة عالية مع HDR</p>
+        </div>
+      </div>
+      <div class="feature-item">
+        <i class="fas fa-rocket feature-icon"></i>
+        <div>
+          <h3>سرعة فائقة</h3>
+          <p>تشغيل فوري بدون تأخير أو تقطيع</p>
+        </div>
+      </div>
+      <div class="feature-item">
+        <i class="fas fa-mobile-alt feature-icon"></i>
+        <div>
+          <h3>متعدد الأجهزة</h3>
+          <p>دعم كامل للهواتف والأجهزة اللوحية</p>
+        </div>
+      </div>
+      <div class="feature-item">
+        <i class="fas fa-sliders-h feature-icon"></i>
+        <div>
+          <h3>إعدادات ذكية</h3>
+          <p>تحكم كامل في جودة البث حسب اتصالك</p>
+        </div>
+      </div>
+      <div class="feature-item">
+        <i class="fas fa-shield-alt feature-icon"></i>
+        <div>
+          <h3>حماية وأمان</h3>
+          <p>تشفير متقدم لحماية بياناتك</p>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <section class="swiper-container swiper-initialized swiper-horizontal swiper-rtl swiper-android swiper-backface-hidden">
+    <div class="swiper-wrapper" id="swiper-wrapper-c6e8535a8d75c6e9" aria-live="off" style="transition-duration: 0ms; transform: translate3d(750px, 0px, 0px); transition-delay: 0ms;"><div class="swiper-slide swiper-slide-next" role="group" aria-label="3 / 3" data-swiper-slide-index="2" style="width: 375px;">
+        <img src="https://iili.io/Fh9j9kl.jpg" alt="صورة 3">
+      </div>
+      <div class="swiper-slide swiper-slide-prev" style="width: 375px;" role="group" aria-label="1 / 3" data-swiper-slide-index="0">
+        <img src="https://iili.io/Fh9VD1j.jpg" alt="صورة 1">
+      </div>
+      <div class="swiper-slide swiper-slide-active" style="width: 375px;" role="group" aria-label="2 / 3" data-swiper-slide-index="1">
+        <img src="https://iili.io/Fh9Xklf.jpg" alt="صورة 2">
+      </div>
+      
+    </div>
+  <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span></section>
+
+  <section class="download-section">
+    <a href="https://pixeldrain.com/u/D8pSwVcH" class="download-btn">تحميل TV Plus للهاتف</a>
+
+
+
+    
+
+
+    <a href="https://pixeldrain.com/u/zzMpJeia" class="download-btn">تحميل TV Plus للشاشات</a>
+
+    <input class="code-input" type="text" value="4147863" readonly="">
+
+    
+
+    
+    <a class="telegram-link" href="https://t.me/TV_Plu_s" target="_blank">
+      <i class="fab fa-telegram"></i>
+    </a>
+  </section>
+
+  <footer>جميع الحقوق محفوظة © TV Plus 2025</footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <script>
+    const btn = document.getElementById('featBtn');
+    const cont = document.getElementById('featuresContainer');
+    btn.addEventListener('click', () => {
+      cont.classList.toggle('active');
+      btn.classList.toggle('open');
+      if (cont.classList.contains('active')) cont.scrollIntoView({ behavior: 'smooth' });
+    });
+    new Swiper('.swiper-container', {
+      loop:true,
+      autoplay:{ delay:4000, disableOnInteraction:false },
+      speed:800,
+      slidesPerView:1,
+      centeredSlides:true,
+      allowTouchMove:false,
+    });
+  </script>
+
+
+</body></html>
